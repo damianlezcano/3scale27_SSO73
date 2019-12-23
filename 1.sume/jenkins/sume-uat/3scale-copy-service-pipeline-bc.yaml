@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    name: "3scale-copy-service-pipeline"
+  name: "3scale-copy-service-pipeline"
+spec:
+  strategy:
+    type: "JenkinsPipeline"
+    jenkinsPipelineStrategy:
+      env:
+        - name: ACCESS_TOKEN_SOURCE
+          value: 9cf6c2ac29bb2594eefe3881df2ee8099518a6cc63d044280ddd3cca4f2fce56
+        - name: ACCESS_TOKEN_DESTINATION
+          value: 63c452e8310794a64857d074b64fa51204045d1e0451369128108038e56a6407
+        - name: URL_SOURCE
+          value: sume-uat-admin.3scale.apps.openshift.ase.local
+        - name: URL_DESTINATION
+          value: 3scale-admin.3scale.apps.openshift.ase.local
+      jenkinsfile: |-
+        node("3scale_toolbox") {
+          stage("Select service") {
+            def servIds = getServiceIds("https://${env.URL_SOURCE}/admin/api/services.xml?access_token=${env.ACCESS_TOKEN_SOURCE}").split(",")
+
+            def INPUT_PARAMS = input message: 'Seleccione el servicio a promocionar', ok: 'Next',
+            parameters: [
+              choice(name: 'ID_SOURCES', choices: servIds.join('\n'), description: "Seleccione un ID de servicio origen en ${env.URL_SOURCE}"),
+              string(name: 'SERVICE_NAME', defaultValue: 'None', description: "Nombre del servicio a promocionar a ${env.URL_DESTINATION}")
+            ]
+            env.ID_SOURCES = INPUT_PARAMS.ID_SOURCES
+            env.SERVICE_NAME = INPUT_PARAMS.SERVICE_NAME
+          }
+          stage("Copy Service") {
+              echo "All parameters have been set as Environment Variables"
+              def idS = env.ID_SOURCES.split(":")[0].trim()
+              echo "ID_SOURCES: ${idS}"
+              echo "SERVICE_NAME: ${env.SERVICE_NAME}"
+              sh "3scale copy service ${idS} --source=https://${ACCESS_TOKEN_SOURCE}@${URL_SOURCE} --destination=https://${ACCESS_TOKEN_DESTINATION}@${URL_DESTINATION} --target_system_name=${env.SERVICE_NAME} -k"
+          }
+        }
+
+
+
+
+

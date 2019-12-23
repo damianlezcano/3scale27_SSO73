@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    name: "3scale-update-service-pipeline"
+  name: "3scale-update-service-pipeline"
+spec:
+  strategy:
+    type: "JenkinsPipeline"
+    jenkinsPipelineStrategy:
+      env:
+        - name: ACCESS_TOKEN_SOURCE
+          value: 413bbfe4b486ee108c175b8856c043914d7e6eed934ec7271537562ef4d51879
+        - name: ACCESS_TOKEN_DESTINATION
+          value: c595af72f3683fc18cced67b6710abdab309bf7027dc9e0252b18b3b38383566
+        - name: URL_SOURCE
+          value: sume-dev-admin.3scale.apps.openshift.ase.local
+        - name: URL_DESTINATION
+          value: sume-test-admin.3scale.apps.openshift.ase.local
+      jenkinsfile: |-
+        node("3scale_toolbox") {
+          stage("Select service") {
+            def servSourceIds = getServiceIds("https://${env.URL_SOURCE}/admin/api/services.xml?access_token=${env.ACCESS_TOKEN_SOURCE}").split(",")
+            def servDestinationIds = getServiceIds("https://${env.URL_DESTINATION}/admin/api/services.xml?access_token=${env.ACCESS_TOKEN_DESTINATION}").split(",")
+            def INPUT_PARAMS = input message: 'Seleccione el servicio a promocionar', ok: 'Next',
+            parameters: [
+              choice(name: 'ID_SOURCES', choices: servSourceIds.join("\n"), description: 'Seleccione un ID de servicio origen'),
+              choice(name: 'ID_DESTINATION', choices: servDestinationIds.join("\n"), description: 'Seleccione un ID de servicio destino')
+            ]
+            env.ID_SOURCES = INPUT_PARAMS.ID_SOURCES
+            env.ID_DESTINATION = INPUT_PARAMS.ID_DESTINATION
+          }
+          stage("Update Policies") {
+              def idS = env.ID_SOURCES.split(":")[0].trim()
+              def idD = env.ID_DESTINATION.split(":")[0].trim()
+              echo "All parameters have been set as Environment Variables"
+              echo "Selected Service Source: ${idS}"
+              echo "Selected Service Destination: ${idD}"
+
+              sh "3scale update service --source=https://${env.ACCESS_TOKEN_SOURCE}@${env.URL_SOURCE} --destination=https://${env.ACCESS_TOKEN_DESTINATION}@${env.URL_DESTINATION} ${idS} ${idD} -k"
+          }
+        }

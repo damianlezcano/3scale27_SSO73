@@ -1,0 +1,37 @@
+docker pull registry.redhat.io/3scale-amp2/backend-rhel7:3scale2.7
+docker pull registry.redhat.io/3scale-amp2/zync-rhel7:3scale2.7
+docker pull registry.redhat.io/3scale-amp2/apicast-gateway-rhel7:3scale2.7
+docker pull registry.redhat.io/3scale-amp2/system-rhel7:3scale2.7
+docker pull registry.redhat.io/rhscl/postgresql-10-rhel7
+docker pull registry.redhat.io/3scale-amp2/memcached-rhel7:3scale2.7
+docker pull registry.redhat.io/rhscl/mysql-57-rhel7:5.7
+docker pull registry.redhat.io/rhscl/redis-32-rhel7:3.2
+
+docker tag registry.redhat.io/3scale-amp2/backend-rhel7:3scale2.7 docker-registry-default.apps.openshift.ase.local/3scale/backend-rhel7:3scale2.7 
+docker tag registry.redhat.io/3scale-amp2/zync-rhel7:3scale2.7 docker-registry-default.apps.openshift.ase.local/3scale/zync-rhel7:3scale2.7 
+docker tag registry.redhat.io/3scale-amp2/apicast-gateway-rhel7:3scale2.7 docker-registry-default.apps.openshift.ase.local/3scale/apicast-gateway-rhel7:3scale2.7 
+docker tag registry.redhat.io/3scale-amp2/system-rhel7:3scale2.7 docker-registry-default.apps.openshift.ase.local/3scale/system-rhel7:3scale2.7 
+docker tag registry.redhat.io/rhscl/postgresql-10-rhel7 docker-registry-default.apps.openshift.ase.local/3scale/postgresql-10-rhel7 
+docker tag registry.redhat.io/3scale-amp2/memcached-rhel7:3scale2.7 docker-registry-default.apps.openshift.ase.local/3scale/memcached-rhel7:3scale2.7 
+docker tag registry.redhat.io/rhscl/mysql-57-rhel7:5.7 docker-registry-default.apps.openshift.ase.local/3scale/mysql-57-rhel7:5.7 
+docker tag registry.redhat.io/rhscl/redis-32-rhel7:3.2 docker-registry-default.apps.openshift.ase.local/3scale/redis-32-rhel7:3.2 
+
+
+docker push docker-registry-default.apps.openshift.ase.local/3scale/backend-rhel7:3scale2.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/zync-rhel7:3scale2.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/apicast-gateway-rhel7:3scale2.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/system-rhel7:3scale2.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/postgresql-10-rhel7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/memcached-rhel7:3scale2.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/mysql-57-rhel7:5.7 
+docker push docker-registry-default.apps.openshift.ase.local/3scale/redis-32-rhel7:3.2 
+
+------------------------------------------------------
+
+oc login https://openshift.ase.local:443 --token=WFdOqIkyi-jYyCUUTsfc9ch5rOw7SLdMbl9dJxZtq6A
+
+oc new-project 3scale --display-name="3scale API Management" --description="3scale API Management Platform"
+
+oc create -f amp.yml -n 3scale
+
+oc new-app --template=3scale-api-management -p ADMIN_PASSWORD=redhat01 -p WILDCARD_DOMAIN=3scale.apps.openshift.ase.local

@@ -1,0 +1,379 @@
+[damian@localhost ~]$ sudo setenforce 0
+[sudo] password for damian: 
+[damian@localhost ~]$ ssh root@srv940closb01.ase.local
+root@srv940closb01.ase.local's password: 
+Last login: Fri Jun  7 10:44:52 2019 from 10.5.240.14
+[root@srv940closb01 ~]# history | grep template
+  908  cd /opt/amp/templates
+  912  yum install 3scale-amp-template
+  914  cd /opt/amp/templates
+  916  yum install 3scale-amp-template
+  917  cd /opt/amp/templates
+  924  oc get templates
+  928  oc get templates
+  929  oc new-app --template=3scale-api-management -p ADMIN_PASSWORD=redhat01 -p WILDCARD_DOMAIN=ase.local -p WILDCARD_POLICY=Subdomain -n 3scale
+  949  cd /opt/amp/templates
+  957  cd /opt/amp/templates
+  967  cd /opt/amp/templates
+  997  history | grep template
+  998  cd /opt/amp/templates/
+ 1000  history | grep template
+[root@srv940closb01 ~]# cd /opt/amp/templates
+[root@srv940closb01 templates]# ls
+amp-eval-tech-preview.yml  amp-ha-tech-preview.yml  amp-s3.yml  amp.yml
+[root@srv940closb01 templates]# docker
+docker                          docker-containerd-current       docker-containerd-shim-current  docker-current                  dockerd-current                 
+docker-containerd               docker-containerd-shim          docker-ctr-current              dockerd                         docker-storage-setup            
+[root@srv940closb01 templates]# docker
+docker                          docker-containerd-current       docker-containerd-shim-current  docker-current                  dockerd-current                 
+docker-containerd               docker-containerd-shim          docker-ctr-current              dockerd                         docker-storage-setup            
+[root@srv940closb01 templates]# docker
+docker                          docker-containerd-current       docker-containerd-shim-current  docker-current                  dockerd-current                 
+docker-containerd               docker-containerd-shim          docker-ctr-current              dockerd                         docker-storage-setup            
+[root@srv940closb01 templates]# docker
+docker                          docker-containerd-current       docker-containerd-shim-current  docker-current                  dockerd-current                 
+docker-containerd               docker-containerd-shim          docker-ctr-current              dockerd                         docker-storage-setup            
+[root@srv940closb01 templates]# docker -version
+unknown shorthand flag: 'e' in -ersion
+See 'docker --help'.
+
+Usage:	docker COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/root/.docker")
+  -D, --debug              Enable debug mode
+      --help               Print usage
+  -H, --host list          Daemon socket(s) to connect to (default [])
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  checkpoint  Manage checkpoints
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  volume      Manage volumes
+
+Commands:
+  attach      Attach to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  deploy      Deploy a new stack or update an existing stack
+  diff        Inspect changes on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+[root@srv940closb01 templates]# docker --version
+Docker version 1.13.1, build b2f74b2/1.13.1
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# 
+[root@srv940closb01 templates]# yum install 3scale_toolbox
+Loaded plugins: product-id, search-disabled-repos, subscription-manager
+Resolving Dependencies
+--> Running transaction check
+---> Package 3scale_toolbox.noarch 0:1.0.0-2.el7 will be installed
+--> Processing Dependency: rh-ruby23-ruby for package: 3scale_toolbox-1.0.0-2.el7.noarch
+--> Processing Dependency: rh-ruby23-rubygem-bundler for package: 3scale_toolbox-1.0.0-2.el7.noarch
+--> Finished Dependency Resolution
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-ruby
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-rubygem-bundler
+**********************************************************************
+yum can be configured to try to resolve such errors by temporarily enabling
+disabled repos and searching for missing dependencies.
+To enable this functionality please set 'notify_only=0' in /etc/yum/pluginconf.d/search-disabled-repos.conf
+**********************************************************************
+
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-ruby
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-rubygem-bundler
+ You could try using --skip-broken to work around the problem
+ You could try running: rpm -Va --nofiles --nodigest
+[root@srv940closb01 templates]# yum repolist
+Loaded plugins: product-id, search-disabled-repos, subscription-manager
+repo id                                                                                  repo name                                                                                                             status
+rhel-7-server-3scale-amp-2.4-rpms/x86_64                                                 Red Hat 3scale API Management Platform 2.4 (RPMs)                                                                         16
+rhel-7-server-ansible-2.6-rpms/x86_64                                                    Red Hat Ansible Engine 2.6 RPMs for Red Hat Enterprise Linux 7 Server                                                     22
+rhel-7-server-extras-rpms/x86_64                                                         Red Hat Enterprise Linux 7 Server - Extras (RPMs)                                                                      1,112
+rhel-7-server-ose-3.11-rpms/x86_64                                                       Red Hat OpenShift Container Platform 3.11 (RPMs)                                                                         508
+rhel-7-server-rpms/7Server/x86_64                                                        Red Hat Enterprise Linux 7 Server (RPMs)                                                                              24,345
+repolist: 26,003
+[root@srv940closb01 templates]# docker info
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+[root@srv940closb01 templates]# sy
+sync                            systemd-cat                     systemd-detect-virt             systemd-loginctl                systemd-run                     sys-unconfig
+sysctl                          systemd-cgls                    systemd-escape                  systemd-machine-id-setup        systemd-stdio-bridge            
+systemctl                       systemd-cgtop                   systemd-firstboot               systemd-notify                  systemd-sysv-convert            
+systemd-analyze                 systemd-coredumpctl             systemd-hwdb                    systemd-nspawn                  systemd-tmpfiles                
+systemd-ask-password            systemd-delta                   systemd-inhibit                 systemd-path                    systemd-tty-ask-password-agent  
+[root@srv940closb01 templates]# system
+systemctl                       systemd-cgls                    systemd-detect-virt             systemd-inhibit                 systemd-nspawn                  systemd-sysv-convert
+systemd-analyze                 systemd-cgtop                   systemd-escape                  systemd-loginctl                systemd-path                    systemd-tmpfiles
+systemd-ask-password            systemd-coredumpctl             systemd-firstboot               systemd-machine-id-setup        systemd-run                     systemd-tty-ask-password-agent
+systemd-cat                     systemd-delta                   systemd-hwdb                    systemd-notify                  systemd-stdio-bridge            
+[root@srv940closb01 templates]# system
+systemctl                       systemd-cgls                    systemd-detect-virt             systemd-inhibit                 systemd-nspawn                  systemd-sysv-convert
+systemd-analyze                 systemd-cgtop                   systemd-escape                  systemd-loginctl                systemd-path                    systemd-tmpfiles
+systemd-ask-password            systemd-coredumpctl             systemd-firstboot               systemd-machine-id-setup        systemd-run                     systemd-tty-ask-password-agent
+systemd-cat                     systemd-delta                   systemd-hwdb                    systemd-notify                  systemd-stdio-bridge            
+[root@srv940closb01 templates]# systemd-
+systemd-analyze                 systemd-cgtop                   systemd-escape                  systemd-loginctl                systemd-path                    systemd-tmpfiles
+systemd-ask-password            systemd-coredumpctl             systemd-firstboot               systemd-machine-id-setup        systemd-run                     systemd-tty-ask-password-agent
+systemd-cat                     systemd-delta                   systemd-hwdb                    systemd-notify                  systemd-stdio-bridge            
+systemd-cgls                    systemd-detect-virt             systemd-inhibit                 systemd-nspawn                  systemd-sysv-convert            
+[root@srv940closb01 templates]# cd /etc/sysconfig/
+[root@srv940closb01 sysconfig]# ls
+anaconda    console   docker          docker-storage-setup  grub          init              iptables         kdump   modules     network-scripts  ntpdate        rhn          rsyncd     selinux
+authconfig  cpupower  docker-network  ebtables-config       htcacheclean  ip6tables         iptables-config  kernel  netconsole  nfs              rdisc          rpcbind      rsyslog    sshd
+cbq         crond     docker-storage  firewalld             httpd         ip6tables-config  irqbalance       man-db  network     ntpd             readonly-root  rpc-rquotad  run-parts  wpa_supplicant
+[root@srv940closb01 sysconfig]# cat docker-storage
+DOCKER_STORAGE_OPTIONS="--storage-driver devicemapper --storage-opt dm.fs=xfs --storage-opt dm.thinpooldev=/dev/mapper/docker--vg-docker--pool --storage-opt dm.use_deferred_removal=true --storage-opt dm.use_deferred_deletion=true "
+[root@srv940closb01 sysconfig]# rm docker-storage
+rm: remove regular file ‘docker-storage’? y
+[root@srv940closb01 sysconfig]# systemctl restart docker
+Job for docker.service failed because the control process exited with error code. See "systemctl status docker.service" and "journalctl -xe" for details.
+[root@srv940closb01 sysconfig]# journalctl -f
+-- Logs begin at Tue 2019-05-14 15:13:41 -03. --
+Jun 07 12:21:10 srv940closb01.ase.local dockerd-current[9311]: time="2019-06-07T12:21:10.472180985-03:00" level=warning msg="devmapper: Usage of loopback devices is strongly discouraged for production use. Please use `--storage-opt dm.thinpooldev` or use `man docker` to refer to dm.thinpooldev section."
+Jun 07 12:21:10 srv940closb01.ase.local kernel: device-mapper: table: 253:4: thin: Couldn't open thin internal device
+Jun 07 12:21:10 srv940closb01.ase.local kernel: device-mapper: ioctl: error adding target to table
+Jun 07 12:21:10 srv940closb01.ase.local dockerd-current[9311]: time="2019-06-07T12:21:10.499353089-03:00" level=error msg="[graphdriver] prior storage driver devicemapper failed: devmapper: Base Device UUID and Filesystem verification failed: devicemapper: Error running deviceCreate (ActivateDevice) dm_task_run failed"
+Jun 07 12:21:10 srv940closb01.ase.local dockerd-current[9311]: Error starting daemon: error initializing graphdriver: devmapper: Base Device UUID and Filesystem verification failed: devicemapper: Error running deviceCreate (ActivateDevice) dm_task_run failed
+Jun 07 12:21:10 srv940closb01.ase.local systemd[1]: docker.service: main process exited, code=exited, status=1/FAILURE
+Jun 07 12:21:10 srv940closb01.ase.local systemd[1]: Failed to start Docker Application Container Engine.
+Jun 07 12:21:10 srv940closb01.ase.local systemd[1]: Unit docker.service entered failed state.
+Jun 07 12:21:10 srv940closb01.ase.local systemd[1]: docker.service failed.
+Jun 07 12:21:10 srv940closb01.ase.local polkitd[5388]: Unregistered Authentication Agent for unix-process:9261:206324559 (system bus name :1.1183, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_GB.UTF-8) (disconnected from bus)
+^C
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# systemctl restart docker
+Job for docker.service failed because the control process exited with error code. See "systemctl status docker.service" and "journalctl -xe" for details.
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# journalctl -f
+-- Logs begin at Tue 2019-05-14 15:13:41 -03. --
+Jun 07 12:21:33 srv940closb01.ase.local dockerd-current[9437]: time="2019-06-07T12:21:33.245483264-03:00" level=warning msg="devmapper: Usage of loopback devices is strongly discouraged for production use. Please use `--storage-opt dm.thinpooldev` or use `man docker` to refer to dm.thinpooldev section."
+Jun 07 12:21:33 srv940closb01.ase.local kernel: device-mapper: table: 253:4: thin: Couldn't open thin internal device
+Jun 07 12:21:33 srv940closb01.ase.local kernel: device-mapper: ioctl: error adding target to table
+Jun 07 12:21:33 srv940closb01.ase.local dockerd-current[9437]: time="2019-06-07T12:21:33.264428940-03:00" level=error msg="[graphdriver] prior storage driver devicemapper failed: devmapper: Base Device UUID and Filesystem verification failed: devicemapper: Error running deviceCreate (ActivateDevice) dm_task_run failed"
+Jun 07 12:21:33 srv940closb01.ase.local dockerd-current[9437]: Error starting daemon: error initializing graphdriver: devmapper: Base Device UUID and Filesystem verification failed: devicemapper: Error running deviceCreate (ActivateDevice) dm_task_run failed
+Jun 07 12:21:33 srv940closb01.ase.local systemd[1]: docker.service: main process exited, code=exited, status=1/FAILURE
+Jun 07 12:21:33 srv940closb01.ase.local systemd[1]: Failed to start Docker Application Container Engine.
+Jun 07 12:21:33 srv940closb01.ase.local systemd[1]: Unit docker.service entered failed state.
+Jun 07 12:21:33 srv940closb01.ase.local systemd[1]: docker.service failed.
+Jun 07 12:21:33 srv940closb01.ase.local polkitd[5388]: Unregistered Authentication Agent for unix-process:9389:206327124 (system bus name :1.1184, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_GB.UTF-8) (disconnected from bus)
+^C
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# ls
+anaconda    console   docker                ebtables-config  htcacheclean  ip6tables         iptables-config  kernel   netconsole       nfs      rdisc          rpcbind      rsyslog    sshd
+authconfig  cpupower  docker-network        firewalld        httpd         ip6tables-config  irqbalance       man-db   network          ntpd     readonly-root  rpc-rquotad  run-parts  wpa_supplicant
+cbq         crond     docker-storage-setup  grub             init          iptables          kdump            modules  network-scripts  ntpdate  rhn            rsyncd       selinux
+[root@srv940closb01 sysconfig]# cat docker
+docker                docker-network        docker-storage-setup  
+[root@srv940closb01 sysconfig]# cat docker-storage-setup 
+DRIVER=devicemapperi
+DEVS=/dev/sdb
+VG=docker-vg
+[root@srv940closb01 sysconfig]# rm docker-storage-setup 
+rm: remove regular file ‘docker-storage-setup’? y
+[root@srv940closb01 sysconfig]# cat docker
+docker          docker-network  
+[root@srv940closb01 sysconfig]# docker info
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+[root@srv940closb01 sysconfig]# systemctl restart docker
+[root@srv940closb01 sysconfig]# systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)
+   Active: active (running) since Fri 2019-06-07 12:22:43 -03; 6s ago
+     Docs: http://docs.docker.com
+ Main PID: 9547 (dockerd-current)
+   CGroup: /system.slice/docker.service
+           ├─9547 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --authorization-plugin=rhel-push-plugin --exec-opt native.cgroupdriver=...
+           └─9555 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd -...
+
+Jun 07 12:22:42 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:42.117974671-03:00" level=info msg="[graphdriver] using prior storage driver: devicemapper"
+Jun 07 12:22:42 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:42.157712600-03:00" level=info msg="Graph migration to content-addressability took 0.00 seconds"
+Jun 07 12:22:42 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:42.159151542-03:00" level=info msg="Loading containers: start."
+Jun 07 12:22:42 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:42.201092616-03:00" level=info msg="Firewalld running: true"
+Jun 07 12:22:42 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:42.883382329-03:00" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemo... IP address"
+Jun 07 12:22:43 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:43.082306587-03:00" level=info msg="Loading containers: done."
+Jun 07 12:22:43 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:43.104813239-03:00" level=info msg="Daemon has completed initialization"
+Jun 07 12:22:43 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:43.104869484-03:00" level=info msg="Docker daemon" commit="b2f74b2/1.13.1" graphdriver=devicemapper version=1.13.1
+Jun 07 12:22:43 srv940closb01.ase.local dockerd-current[9547]: time="2019-06-07T12:22:43.135291254-03:00" level=info msg="API listen on /var/run/docker.sock"
+Jun 07 12:22:43 srv940closb01.ase.local systemd[1]: Started Docker Application Container Engine.
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 1.13.1
+Storage Driver: devicemapper
+ Pool Name: docker-253:2-100672344-pool
+ Pool Blocksize: 65.54 kB
+ Base Device Size: 10.74 GB
+ Backing Filesystem: xfs
+ Data file: /dev/loop0
+ Metadata file: /dev/loop1
+ Data Space Used: 11.73 MB
+ Data Space Total: 107.4 GB
+ Data Space Available: 43.13 GB
+ Metadata Space Used: 17.36 MB
+ Metadata Space Total: 2.147 GB
+ Metadata Space Available: 2.13 GB
+ Thin Pool Minimum Free Space: 10.74 GB
+ Udev Sync Supported: true
+ Deferred Removal Enabled: true
+ Deferred Deletion Enabled: true
+ Deferred Deleted Device Count: 0
+ Data loop file: /var/lib/docker/devicemapper/devicemapper/data
+ WARNING: Usage of loopback devices is strongly discouraged for production use. Use `--storage-opt dm.thinpooldev` to specify a custom block storage device.
+ Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
+ Library Version: 1.02.149-RHEL7 (2018-07-20)
+Logging Driver: journald
+Cgroup Driver: systemd
+Plugins: 
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Authorization: rhel-push-plugin
+Swarm: inactive
+Runtimes: docker-runc runc
+Default Runtime: docker-runc
+Init Binary: /usr/libexec/docker/docker-init-current
+containerd version:  (expected: aa8187dbd3b7ad67d8e5e3a15115d3eef43a7ed1)
+runc version: 9c3c5f853ebf0ffac0d087e94daef462133b69c7 (expected: 9df8b306d01f59d3a8029be411de015b7304dd8f)
+init version: fec3683b971d9c3ef73f284f176672c44b448662 (expected: 949e6facb77383876aeff8a6944dde66b3089574)
+Security Options:
+ seccomp
+  WARNING: You're not using the default seccomp profile
+  Profile: /etc/docker/seccomp.json
+ selinux
+Kernel Version: 3.10.0-957.10.1.el7.x86_64
+Operating System: Red Hat Enterprise Linux Server 7.6 (Maipo)
+OSType: linux
+Architecture: x86_64
+Number of Docker Hooks: 3
+CPUs: 2
+Total Memory: 3.701 GiB
+Name: srv940closb01.ase.local
+ID: JCRT:7KDE:SSL3:BSKE:R7DR:C5EZ:NOW3:DFVE:ZX4A:AVFY:BA5B:MH5G
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://registry.access.redhat.com/v1/
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+Registries: registry.access.redhat.com (secure), docker.io (secure), registry.fedoraproject.org (secure), quay.io (secure), registry.centos.org (secure), docker.io (secure)
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# 
+[root@srv940closb01 sysconfig]# yum install 3scale_toolbox
+Loaded plugins: product-id, search-disabled-repos, subscription-manager
+Resolving Dependencies
+--> Running transaction check
+---> Package 3scale_toolbox.noarch 0:1.0.0-2.el7 will be installed
+--> Processing Dependency: rh-ruby23-ruby for package: 3scale_toolbox-1.0.0-2.el7.noarch
+--> Processing Dependency: rh-ruby23-rubygem-bundler for package: 3scale_toolbox-1.0.0-2.el7.noarch
+--> Finished Dependency Resolution
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-ruby
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-rubygem-bundler
+**********************************************************************
+yum can be configured to try to resolve such errors by temporarily enabling
+disabled repos and searching for missing dependencies.
+To enable this functionality please set 'notify_only=0' in /etc/yum/pluginconf.d/search-disabled-repos.conf
+**********************************************************************
+
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-ruby
+Error: Package: 3scale_toolbox-1.0.0-2.el7.noarch (rhel-7-server-3scale-amp-2.4-rpms)
+           Requires: rh-ruby23-rubygem-bundler
+ You could try using --skip-broken to work around the problem
+ You could try running: rpm -Va --nofiles --nodigest
+[root@srv940closb01 sysconfig]# yum repolist
+Loaded plugins: product-id, search-disabled-repos, subscription-manager
+repo id                                                                                  repo name                                                                                                             status
+rhel-7-server-3scale-amp-2.4-rpms/x86_64                                                 Red Hat 3scale API Management Platform 2.4 (RPMs)                                                                         16
+rhel-7-server-ansible-2.6-rpms/x86_64                                                    Red Hat Ansible Engine 2.6 RPMs for Red Hat Enterprise Linux 7 Server                                                     22
+rhel-7-server-extras-rpms/x86_64                                                         Red Hat Enterprise Linux 7 Server - Extras (RPMs)                                                                      1,112
+rhel-7-server-ose-3.11-rpms/x86_64                                                       Red Hat OpenShift Container Platform 3.11 (RPMs)                                                                         508
+rhel-7-server-rpms/7Server/x86_64                                                        Red Hat Enterprise Linux 7 Server (RPMs)                                                                              24,345
+repolist: 26,003
+[root@srv940closb01 sysconfig]# 
